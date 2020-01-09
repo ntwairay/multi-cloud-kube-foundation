@@ -1,0 +1,40 @@
+repositories:
+  - name: stable
+    url: https://kubernetes-charts.storage.googleapis.com
+  - name: incubator
+    url: https://storage.googleapis.com/kubernetes-charts-incubator
+
+helmDefaults:
+  wait: true
+
+releases:
+  - name: ngnix-ingress
+    namespace: ingress
+    chart: stable/nginx-ingress
+    version: ~1.26.2
+    values:
+      - ./common/ngnix-ingress.yaml
+      - ./environments/gke.cluster01/ngnix-ingress.yaml
+
+  - name: external-dns
+    namespace: monitoring
+    chart: stable/external-dns
+    version: ~2.0.0
+    values:
+      - ./common/external-dns.yaml
+      - ./environments/gke.cluster01/external-dns.yaml
+
+  - name: prometheus-operator
+    namespace: monitoring
+    version: ~8
+    chart: stable/prometheus-operator
+    values:
+      - ./common/prometheus-operator.yaml
+      - ./environments/gke.cluster01/prometheus-operator.yaml
+
+  - name: vault-operator
+    namespace: monitoring
+    chart: stable/vault-operator
+    values:
+      - ./common/vault-operator.yaml
+      - ./environments/gke.cluster01/vault-operator.yaml

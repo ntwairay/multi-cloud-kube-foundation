@@ -1,0 +1,9 @@
+bases:
+  - ../../apps/dashboard
+  - ../../apps/tiller
+  
+resources:
+ # - prometheus-operator-ingress.yaml
+#   - aws-auth-cm.yaml
+#   - jenkins-ingress.yaml
+#   - nexus-ingress.yaml

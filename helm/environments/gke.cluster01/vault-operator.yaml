@@ -1,0 +1,4 @@
+replicaCount: 2
+
+etcd-operator:
+  enabled: true
